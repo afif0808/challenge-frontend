@@ -10,6 +10,17 @@ async function getProvinceList() {
     return await resp.json()
 }
 
+function deleteProvince(id) {
+    return async function () {
+        const resp = await fetch(baseURL + id, { method: "DELETE" })
+        console.log(resp)
+        if (resp.ok == false) {
+            throw new Error("something happened")
+        }
+        return resp
+    }
+}
+
 
 async function createProvince(province) {
     const req = {
@@ -27,7 +38,7 @@ async function createProvince(province) {
     return await resp.json()
 }
 
-export {getProvinceList,createProvince}
+export {getProvinceList,createProvince,deleteProvince}
 
 
 
